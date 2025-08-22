@@ -10,17 +10,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_games")
+@Table(name = "tb_game")
 public class Game {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    
+
     @Column(name = "game_year")
     private Integer year;
-    private String plataform;
+    private String genre;
+    private String plataforms;
+    private Double score;
     private String imgUrl;
     private String shortDescription;
     private String longDescription;
@@ -28,12 +30,14 @@ public class Game {
     public Game() {
     }
 
-    public Game(Long id, String title, Integer year, String plataform, String imgUrl, String shortDescription,
-            String longDescription) {
+    public Game(Long id, String title, Integer year, String genre, String plataforms, Double score, String imgUrl,
+            String shortDescription, String longDescription) {
         this.id = id;
         this.title = title;
         this.year = year;
-        this.plataform = plataform;
+        this.genre = genre;
+        this.plataforms = plataforms;
+        this.score = score;
         this.imgUrl = imgUrl;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
@@ -63,12 +67,28 @@ public class Game {
         this.year = year;
     }
 
-    public String getPlataform() {
-        return plataform;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setPlataform(String plataform) {
-        this.plataform = plataform;
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getPlataforms() {
+        return plataforms;
+    }
+
+    public void setPlataforms(String plataforms) {
+        this.plataforms = plataforms;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 
     public String getImgUrl() {
@@ -94,8 +114,6 @@ public class Game {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
-
-
 
     // Comparando o objeto Game
     @Override
